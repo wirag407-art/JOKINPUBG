@@ -1,2 +1,477 @@
-# JOKINPUBG
-Web
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KUTHA JOKI PUBG — Joki PUBG Mobile</title>
+  <meta name="description" content="KUTHA JOKI PUBG menyediakan jasa joki PUBG Mobile: push rank, RP mission, dan event. Fast respon, aman, dan rapi." />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#eaf0ff;
+      --muted:#a7b4d6;
+      --brand:#6ea8fe;
+      --brand2:#7ef0c7;
+      --ring: rgba(110,168,254,.35);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1000px 500px at 15% 10%, rgba(110,168,254,.18), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(126,240,199,.12), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:22px}
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(10px);
+      background: rgba(11,18,32,.6);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:14px}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.3px}
+    .badge{
+      width:36px; height:36px; border-radius:14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 10px 20px rgba(110,168,254,.18);
+    }
+    nav ul{list-style:none; padding:0; margin:0; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    nav a{
+      padding:10px 12px; border-radius:12px;
+      color:var(--muted);
+    }
+    nav a:hover{background: rgba(255,255,255,.05); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      box-shadow: 0 10px 18px rgba(0,0,0,.18);
+      cursor:pointer;
+    }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#061019;
+      font-weight:800;
+    }
+    .btn:focus{outline:3px solid var(--ring); outline-offset:2px}
+
+    .hero{
+      padding:48px 0 10px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .hero h1{
+      font-size: clamp(28px, 4vw, 50px);
+      margin:0 0 10px;
+      line-height:1.12;
+    }
+    .hero p{margin:0 0 16px; color:var(--muted); font-size: 1.05rem}
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap}
+
+    .panel{
+      background: rgba(17,26,46,.72);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-90px -90px auto auto;
+      width:210px; height:210px;
+      background: radial-gradient(circle at 30% 30%, rgba(126,240,199,.22), transparent 62%);
+      transform: rotate(18deg);
+    }
+    .kpis{display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:10px; position:relative}
+    .chip{
+      padding:12px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:16px;
+    }
+    .chip b{display:block; font-size:1.05rem}
+    .chip span{color:var(--muted); font-size:.92rem}
+
+    .section{padding:20px 0}
+    .section h2{margin:0 0 10px; font-size:1.35rem}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+    .card{
+      background: rgba(17,26,46,.55);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.22);
+    }
+    .card h3{margin:8px 0 6px}
+    .card p{margin:0; color:var(--muted)}
+    .icon{
+      width:42px; height:42px;
+      border-radius:16px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      font-size:20px;
+    }
+
+    .pricing{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .price{position:relative; overflow:hidden;}
+    .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(110,168,254,.14);
+      border:1px solid rgba(110,168,254,.22);
+      color: var(--text);
+      font-size:.86rem;
+      margin-bottom:10px;
+    }
+    .money{
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin: 2px 0 6px;
+      letter-spacing: .2px;
+    }
+    .submoney{color:var(--muted); margin:0 0 10px; font-size:.95rem}
+    .price ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+    .price li{margin:6px 0}
+    .price .cta{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    .note{
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      color:var(--muted);
+    }
+    details{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(17,26,46,.45);
+      border-radius: 16px;
+      padding:12px 14px;
+    }
+    summary{cursor:pointer; font-weight:700}
+    details p{color:var(--muted); margin:8px 0 0}
+
+    footer{
+      padding:26px 0 40px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.06);
+      margin-top:22px;
+    }
+
+    .fab{
+      position:fixed; right:16px; bottom:16px;
+      z-index:50;
+      border:none;
+      border-radius:999px;
+      padding:12px 14px;
+      display:flex; gap:10px; align-items:center;
+      box-shadow: 0 16px 30px rgba(0,0,0,.35);
+    }
+    .fab .dot{
+      width:11px; height:11px; border-radius:50%;
+      background: var(--brand2);
+      box-shadow: 0 0 0 6px rgba(126,240,199,.15);
+    }
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:30px}
+      .grid3,.pricing,.two{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo" aria-label="KUTHA JOKI PUBG">
+        <div class="badge" aria-hidden="true"></div>
+        <span>KUTHA JOKI PUBG</span>
+      </div>
+
+      <nav aria-label="Navigasi">
+        <ul>
+          <li><a href="#layanan">Layanan</a></li>
+          <li><a href="#harga">Harga</a></li>
+          <li><a href="#proses">Proses</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn" id="btnTopWA" href="#">Chat WA</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="panel">
+        <span class="tag">Joki PUBG Mobile • Fast Respon</span>
+        <h1>Push Rank & RP Mission—rill, rapi, dan ada bukti progres.</h1>
+        <p>
+          Kamu fokus sekolah/aktivitas, urusan rank biar kami yang gas.
+          Update progress + screenshot sebelum & sesudah.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#harga">Lihat Harga</a>
+          <a class="btn" href="#proses">Cara Order</a>
+          <a class="btn" id="btnHeroWA" href="#">Chat WhatsApp</a>
+        </div>
+
+        <div class="kpis" aria-label="Keunggulan singkat">
+          <div class="chip"><b>No Cheat</b><span>Main wajar</span></div>
+          <div class="chip"><b>Update</b><span>Progres jelas</span></div>
+          <div class="chip"><b>Rapi</b><span>Setting aman</span></div>
+          <div class="chip"><b>Fast Respon</b><span>Chat sat-set</span></div>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Info cepat">
+        <h2 style="margin:0 0 6px; font-size:1.15rem;">Info Cepat</h2>
+        <p style="margin:0; color:var(--muted); position:relative">
+          Layanan: Push Rank • RP Mission • Event.
+        </p>
+
+        <div class="note" style="margin-top:10px; position:relative">
+          <b style="color:var(--text)">Keamanan:</b>
+          <div style="margin-top:6px">
+            Kami <b>tidak</b> pakai cheat / aplikasi ilegal.
+            Risiko penalti dari sistem game tetap ada (jarang), tapi diminimalkan dengan cara main yang wajar.
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:10px; position:relative">
+          <b style="color:var(--text)">Order via WA:</b>
+          <div style="margin-top:6px">081337541942</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="layanan">
+      <h2>Layanan</h2>
+      <div class="grid3">
+        <div class="card">
+          <div class="icon">🏆</div>
+          <h3>Push Rank</h3>
+          <p>Target rank sesuai request. Progres per hari + bukti screenshot.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎫</div>
+          <h3>RP Mission</h3>
+          <p>Daily/weekly mission beres. Cocok buat yang sibuk.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚔️</div>
+          <h3>Event / Misi</h3>
+          <p>Event musiman & misi tertentu. Deal dulu biar jelas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="harga">
+      <h2>List Harga</h2>
+      <div class="note" style="margin-bottom:12px">
+        <b style="color:var(--text)">Catatan:</b> Harga tergantung mode (TPP/FPP), server, dan antrian.
+        Ini patokan biar kamu gampang pilih. Kalau mau hitung akurat, chat WA aja.
+      </div>
+
+      <div class="pricing">
+        <div class="card price">
+          <span class="tag">RP MISSION</span>
+          <div class="money">Rp 25k</div>
+          <p class="submoney">per 1 minggu (daily + weekly)</p>
+          <ul>
+            <li>Berangkatin misi RP (sesuai limit)</li>
+            <li>Update progres</li>
+            <li>Tanpa ubah sens/layout</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary order" href="#" data-paket="RP Mission 1 Minggu (Rp 25k)">Order</a>
+            <a class="btn order" href="#" data-paket="Tanya RP Mission">Tanya</a>
+          </div>
+        </div>
+
+        <div class="card price" style="border-color: rgba(110,168,254,.35);">
+          <span class="tag">PUSH RANK</span>
+          <div class="money">Rp 35k</div>
+          <p class="submoney">per +1 tier (contoh: Gold IV → Gold III)</p>
+          <ul>
+            <li>Push rank mode normal (tanpa cheat)</li>
+            <li>Estimasi progres per hari</li>
+            <li>Screenshot sebelum & sesudah</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary order" href="#" data-paket="Push Rank +1 Tier (mulai Rp 35k)">Order</a>
+            <a class="btn order" href="#" data-paket="Hitung Harga Push Rank">Hitung</a>
+          </div>
+        </div>
+
+        <div class="card price">
+          <span class="tag">EVENT / MISSION</span>
+          <div class="money">Rp 15k</div>
+          <p class="submoney">mulai (tergantung event)</p>
+          <ul>
+            <li>Event musiman / misi tertentu</li>
+            <li>Deal target dulu biar jelas</li>
+            <li>Update + bukti</li>
+          </ul>
+          <div class="cta">
+            <a class="btn primary order" href="#" data-paket="Event/Mission (mulai Rp 15k)">Order</a>
+            <a class="btn order" href="#" data-paket="Tanya Event/Mission">Tanya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="two" style="margin-top:12px">
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Paket Cepat (Rekomendasi)</h3>
+          <p style="margin:0; color:var(--muted)">
+            Biar lebih laku, biasanya orang suka paket jelas target. Contoh:
+          </p>
+          <ul style="color:var(--muted); margin:10px 0 0; padding-left:18px">
+            <li><b>Platinum → Diamond</b>: mulai <b>Rp 150k</b> (tergantung tier awal)</li>
+            <li><b>Diamond → Crown</b>: mulai <b>Rp 220k</b></li>
+            <li><b>Crown → Ace</b>: mulai <b>Rp 300k</b></li>
+          </ul>
+          <div class="note" style="margin-top:10px">
+            Ini perkiraan. Final harga dihitung dari rank awal + target + mode + antrian.
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Bonus</h3>
+          <ul style="color:var(--muted); margin:0; padding-left:18px">
+            <li>Prioritas untuk yang repeat order</li>
+            <li>Request jam main (kalau bisa)</li>
+            <li>Jaga setting (sens/layout) tetap aman</li>
+          </ul>
+          <div class="cta" style="margin-top:12px">
+            <a class="btn primary" id="btnHargaWA" href="#">Chat buat hitung harga</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proses">
+      <h2>Cara Order</h2>
+      <div class="two">
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Step-by-step</h3>
+          <ol style="margin:0; padding-left:18px; color:var(--muted)">
+            <li>Pilih paket → klik <b>Order</b>.</li>
+            <li>Kirim: rank sekarang, target, server, TPP/FPP.</li>
+            <li>Kami hitung harga + estimasi selesai.</li>
+            <li>Mulai joki → update progres.</li>
+            <li>Selesai → bukti + serah terima.</li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Aturan Aman</h3>
+          <ul style="margin:0; padding-left:18px; color:var(--muted)">
+            <li>Tanpa cheat / tools ilegal.</li>
+            <li>Tidak ubah sens/layout (kecuali diminta).</li>
+            <li>Tidak sentuh UC/Inventory tanpa izin.</li>
+            <li>Update sesuai antrian.</li>
+          </ul>
+          <div class="note" style="margin-top:10px">
+            Biar makin aman: aktifkan verifikasi/2FA dan pastikan akun kamu siap.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div class="two">
+        <details>
+          <summary>Aman gak?</summary>
+          <p>Kami main normal tanpa cheat. Tetap ada risiko dari sistem game (misal login beda perangkat/lokasi), tapi kami minimalkan dengan cara main wajar.</p>
+        </details>
+        <details>
+          <summary>Berapa lama selesai?</summary>
+          <p>Tergantung target rank, antrian, dan kondisi lobby. Nanti kami kasih estimasi setelah kamu kirim rank sekarang + target.</p>
+        </details>
+        <details>
+          <summary>Settingku bakal berubah?</summary>
+          <p>Enggak. Kami usahakan tidak ubah sensitivitas/layout. Kalau perlu ubah, pasti izin dulu.</p>
+        </details>
+        <details>
+          <summary>Bayar gimana?</summary>
+          <p>Kamu bisa tambahin metode pembayaran di sini (Dana/OVO/GoPay/Transfer). Kalau mau, bilang metode yang kamu pakai, nanti aku editin.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="padding:0">
+        © <span id="year"></span> <b style="color:var(--text)">KUTHA JOKI PUBG</b> — WA: 081337541942
+      </div>
+    </footer>
+  </main>
+
+  <a class="btn primary fab" id="fabWA" href="#" aria-label="Chat WhatsApp">
+    <span class="dot" aria-hidden="true"></span>
+    Chat WhatsApp
+  </a>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // WhatsApp config
+    const waNumber = "6281337541942"; // format internasional (tanpa 0)
+    const brand = "KUTHA JOKI PUBG";
+    const baseMsg = `Halo ${brand}, saya mau tanya jasa joki PUBG.`;
+
+    function waLink(message){
+      const text = encodeURIComponent(message);
+      return `https://wa.me/${waNumber}?text=${text}`;
+    }
+
+    // Set default WA buttons
+    const btnTopWA = document.getElementById("btnTopWA");
+    const btnHeroWA = document.getElementById("btnHeroWA");
+    const fabWA = document.getElementById("fabWA");
+    const btnHargaWA = document.getElementById("btnHargaWA");
+
+    btnTopWA.href = waLink(baseMsg);
+    btnHeroWA.href = waLink(baseMsg);
+    fabWA.href = waLink(baseMsg);
+    btnHargaWA.href = waLink(`Halo ${brand}, mau hitung harga push rank. Rank sekarang: ___, target: ___, server: ___, mode: TPP/FPP.`);
+
+    // Order buttons with paket info
+    document.querySelectorAll(".order").forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        const paket = btn.dataset.paket || "Joki PUBG";
+        const msg =
+`Halo ${brand}, saya mau order: ${paket}
+Rank sekarang:
+Target:
+Server:
+Mode (TPP/FPP):
+Catatan (opsional):`;
+        window.open(waLink(msg), "_blank");
+      });
+    });
+  </script>
+</body>
+</html>
